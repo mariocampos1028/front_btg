@@ -1,0 +1,68 @@
+<div class="inventory-form">
+  <h2>Aperturar/Cancelar Fondo</h2>
+  <form class="form" [formGroup]="formgroup">
+    <div >
+      <select id="cliente" name="cliente" formControlName="cliente">
+        <option value="" disabled selected>Seleccione cliente</option>
+        <option *ngFor="let cliente of clientesArray" [ngValue]="cliente">
+          {{ cliente.nombre }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <select id="tipo" name="tipo" formControlName="tipo">
+        <option value="" disabled selected>Seleccione tipo</option>
+        <option value="Apertura">Apertura</option>
+        <option value="Cancelacion">Cancelacion</option>
+      </select>
+    </div>
+    <div>
+      <select id="fondo" name="fondo" formControlName="fondo">
+        <option value="" disabled selected>Seleccione fondo</option>
+        <option *ngFor="let fondo of fondosArray" [ngValue]="fondo">
+          {{ fondo.nombre }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <input type="number" placeholder="monto" formControlName="monto"/>
+    </div>
+
+
+    <div>
+        <button type="submit" (click)="clicSaveTransaccion()">Guardar y enviar</button>
+    </div>
+  </form>
+
+</div>
+<br><br>
+<div class="transacciones-table">
+  <h2 style="text-align: center;">Transacciones</h2>
+  <table class="table table-success table-striped">
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Cliente</th>
+              <th>Id_cliente</th>
+              <th>Tipo</th>
+              <th>Nombre Fondo</th>
+              <th>Fecha</th>
+              <th>Monto</th>
+          </tr>
+      </thead>
+      <tbody>
+          <!-- Iteramos sobre la lista de clientes -->
+          <tr *ngFor="let transaccion of transaccionArray">
+              <td>{{ transaccion.id }}</td>
+              <td>{{ transaccion.cliente }}</td>
+              <td>{{ transaccion.id_cliente }}</td>
+              <td>{{ transaccion.tipo }}</td>
+              <td>{{ transaccion.fondo }}</td>
+              <td>{{ transaccion.fecha }}</td>
+              <td>{{ transaccion.monto }}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+<br><br><br>
+

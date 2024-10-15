@@ -1,0 +1,57 @@
+<div class="inventory-form">
+    <h2>Registrar Cliente</h2>
+
+    <form class="form" [formGroup]="formgroup">
+      <div >
+        <input type="number" placeholder="Documento" formControlName="documento"/>
+      </div>
+      <div>
+        <input type="text" placeholder="Nombre Cliente" formControlName="nombre"/>
+      </div>
+      <div>
+        <input type="number" placeholder="Saldo" formControlName="saldo"/>
+      </div>
+
+      <div>
+        <input type="email" placeholder="Email" formControlName="email"/>
+      </div>
+      <div>
+        <input type="number" placeholder="Telefono" formControlName="telefono"/>
+      </div>
+
+
+      <div>
+          <button type="submit" (click)="clicSaveCliente()">Guardar y enviar</button>
+      </div>
+    </form>
+  </div>
+  <br><br>
+  <div class="clientes-table">
+    <h2 style="text-align: center;">Lista de Clientes</h2>
+    <table class="table table-success table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Saldo</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iteramos sobre la lista de clientes -->
+            <tr *ngFor="let cliente of clientesArray">
+                <td>{{ cliente.id }}</td>
+                <td>{{ cliente.nombre }}</td>
+                <td>{{ cliente.saldo }}</td>
+                <td>{{ cliente.email }}</td>
+                <td>{{ cliente.telefono }}</td>
+                <td>
+                  <button class="btn btn-danger" (click)="eliminarCliente(cliente)">Del</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br><br><br>
